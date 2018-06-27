@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,22 +10,16 @@
 		<link rel="stylesheet" href="css/style.css">
 		<title>Zorg4you</title>
 		<script src="js/function.js"></script>
-
+	</head>
+	<body>
 		<?php
 			include('inc/config.php');
 			$werknemer = $db->query('SELECT * FROM Werknemers ORDER BY WerknemerID DESC');
 			$rollen = $db->query('SELECT * FROM rollen');
-		?>
-
-	</head>
-
-	<body>
-
-		<?php include('inc/header.php'); ?>
+			include('inc/header.php'); ?>
 
 		<form class="form-horizontal hidden" id="werknemer-form" method="post" action="inc/functions.php">
 			<fieldset>
-
 				<input id="form-type" name="action" placeholder="" class="form-control input-md" type="hidden">
 				<input id="type" name="type" placeholder="" class="form-control input-md" type="hidden">
 

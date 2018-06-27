@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta content="nl" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -10,94 +9,79 @@
 		<link rel="stylesheet" href="css/style.css">
 		<title>Zorg4you</title>
 		<script src="js/function.js"></script>
-
 		<?php
 			include('inc/config.php');
 			$klant = $db->query('SELECT * FROM Klanten ORDER BY klantnummer DESC');
 		?>
-
 	</head>
-
 	<body>
-
 		<?php include('inc/header.php'); ?>
-
-
 		<form class="form-horizontal hidden" id="klant-form" method="post" action="inc/functions.php">
 			<fieldset>
-
 				<input id="form-type" name="action" placeholder="" class="form-control input-md" type="hidden">
         <input id="type" name="type" placeholder="" class="form-control input-md" type="hidden">
 
 				<div class="form-group">
-				<label class="col-md-4 control-label" for="voornaam">Voornaam</label>
-				<div class="col-md-4">
-				<input id="voornaam" name="voornaam" placeholder="" class="form-control input-md" type="text">
-
-				</div>
-				</div>
-
-				<div class="form-group">
-				<label class="col-md-4 control-label" for="tussenvoegsel">Tussenvoegsel</label>
-				<div class="col-md-4">
-				<input id="tussenvoegsel" name="tussenvoegsel" placeholder="" class="form-control input-md" type="text">
-
-				</div>
+					<label class="col-md-4 control-label" for="voornaam">Voornaam</label>
+					<div class="col-md-4">
+						<input id="voornaam" name="voornaam" placeholder="" class="form-control input-md" type="text">
+					</div>
 				</div>
 
 				<div class="form-group">
-				<label class="col-md-4 control-label" for="achternaam">Achternaam</label>
-				<div class="col-md-4">
-				<input id="achternaam" name="achternaam" placeholder="" class="form-control input-md" type="text">
-
-				</div>
-				</div>
-
-				<div class="form-group">
-				<label class="col-md-4 control-label" for="straatnaam">Straatnaam</label>
-				<div class="col-md-4">
-				<input id="straatnaam" name="straatnaam" placeholder="" class="form-control input-md" type="text">
-
-				</div>
+					<label class="col-md-4 control-label" for="tussenvoegsel">Tussenvoegsel</label>
+					<div class="col-md-4">
+						<input id="tussenvoegsel" name="tussenvoegsel" placeholder="" class="form-control input-md" type="text">
+					</div>
 				</div>
 
 				<div class="form-group">
-				<label class="col-md-4 control-label" for="huisnummer">Huisnummer</label>
-				<div class="col-md-4">
-				<input id="huisnummer" name="huisnummer" placeholder="" class="form-control input-md" type="text">
-
-				</div>
-				</div>
-
-				<div class="form-group">
-				<label class="col-md-4 control-label" for="toevoeging">Toevoeging</label>
-				<div class="col-md-4">
-				<input id="toevoeging" name="toevoeging" placeholder="" class="form-control input-md" type="text">
-
-				</div>
+					<label class="col-md-4 control-label" for="achternaam">Achternaam</label>
+					<div class="col-md-4">
+						<input id="achternaam" name="achternaam" placeholder="" class="form-control input-md" type="text">
+					</div>
 				</div>
 
 				<div class="form-group">
-				<label class="col-md-4 control-label" for="postcode">Postcode</label>
-				<div class="col-md-4">
-				<input id="postcode" name="postcode" placeholder="0000AA" class="form-control input-md" type="text">
-
-				</div>
-				</div>
-
-				<div class="form-group">
-				<label class="col-md-4 control-label" for="plaats">Plaats</label>
-				<div class="col-md-4">
-				<input id="plaats" name="plaats" placeholder="" class="form-control input-md" type="text">
-
-				</div>
+					<label class="col-md-4 control-label" for="straatnaam">Straatnaam</label>
+					<div class="col-md-4">
+						<input id="straatnaam" name="straatnaam" placeholder="" class="form-control input-md" type="text">
+					</div>
 				</div>
 
 				<div class="form-group">
-				<label class="col-md-4 control-label" for="submit"></label>
-				<div class="col-md-4">
-					<input id="submit" type="submit" class="btn btn-primary" value="Toevoegen"/>
+					<label class="col-md-4 control-label" for="huisnummer">Huisnummer</label>
+					<div class="col-md-4">
+						<input id="huisnummer" name="huisnummer" placeholder="" class="form-control input-md" type="text">
+					</div>
 				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="toevoeging">Toevoeging</label>
+					<div class="col-md-4">
+						<input id="toevoeging" name="toevoeging" placeholder="" class="form-control input-md" type="text">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="postcode">Postcode</label>
+					<div class="col-md-4">
+						<input id="postcode" name="postcode" placeholder="0000AA" class="form-control input-md" type="text">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="plaats">Plaats</label>
+					<div class="col-md-4">
+						<input id="plaats" name="plaats" placeholder="" class="form-control input-md" type="text">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+					<div class="col-md-4">
+						<input id="submit" type="submit" class="btn btn-primary" value="Toevoegen"/>
+					</div>
 				</div>
 
 			</fieldset>
@@ -130,8 +114,6 @@
 						</tr>
 					<?php endforeach; ?>
 		</table>
-
 		<?php include('inc/footer.php') ?>
 	</body>
-
 </html>
