@@ -1,7 +1,7 @@
 <?php
   include('config.php');
 
-    if($_POST['handle'] == "verwijderen") {
+    if($_POST['action'] == "verwijderen") {
       extract($_POST);
       $delete = "DELETE FROM $type WHERE $col = :var";
       $stmt = $db->prepare($delete);
@@ -10,7 +10,7 @@
 		  echo 200;
     }
 
-    if($_POST['handle'] == "toevoegen") {
+    if($_POST['action'] == "toevoegen") {
         extract($_POST);
         if($type == "werknemer") {
             $add = "INSERT INTO Werknemers (Voornaam, Tussenvoegsel, Achternaam, Straatnaam, Huisnummer, Toevoeging, Postcode, Plaats, RolId) VALUES (:Voornaam, :Tussenvoegsel, :Achternaam, :Straatnaam, :Huisnummer, :Toevoeging, :Postcode, :Plaats, :RolId)";
@@ -50,16 +50,36 @@
         }
     }
 
-    if(strpos($_POST['handle'], "wijzigen") !== false) {
+    if(strpos($_POST['action'], "wijzigen") !== false) {
         extract($_POST);
-        $id = str_replace("wijzigen:", "", $_POST['handle']);
+        $id = str_replace("wijzigen:", "", $_POST['action']);
         if($type == "werknemer") {
-            $sql = "UPDATE Werknemers SET Voornaam='$voornaam', Tussenvoegsel='$tussenvoegsel', Achternaam='$achternaam', Straatnaam='$straatnaam', Huisnummer='$huisnummer', Toevoeging='$toevoeging', Postcode='$postcode', Plaats='$plaats' WHERE WerknemerID=$id";
-            $db->exec($sql);
+            $sql = "UPDATE Werknemers SET Voornaam = :voornaam, Tussenvoegsel = :tussenvoegsel, Achternaam = :achternaam, Straatnaam = :straatnaam, Huisnummer = :huisnummer, Toevoeging = :toevoeging, Postcode = :postcode, Plaats = :plaats WHERE WerknemerID = :id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':voornaam', $voornaam);
+            $stmt->bindParam(':tussenvoegsel', $tussenvoegsel);
+            $stmt->bindParam(':achternaam', $achternaam);
+            $stmt->bindParam(':straatnaam', $straatnaam);
+            $stmt->bindParam(':huisnummer', $huisnummer);
+            $stmt->bindParam(':toevoeging', $toevoeging);
+            $stmt->bindParam(':postcode', $postcode);
+            $stmt->bindParam(':plaats', $plaats);
+            $stmt->execute();
             header("Location: ../index.php");
         } elseif($type == "klant") {
-            $sql = "UPDATE Klanten SET Voornaam='$voornaam', Tussenvoegsel='$tussenvoegsel', Achternaam='$achternaam', Straatnaam='$straatnaam', Huisnummer='$huisnummer', Toevoeging='$toevoeging', Postcode='$postcode', Plaats='$plaats' WHERE Klantnummer=$id";
-            $db->exec($sql);
+            $sql = "UPDATE Klanten SET Voornaam = :voornaam, Tussenvoegsel = :tussenvoegsel, Achternaam = :achternaam, Straatnaam = :straatnaam, Huisnummer = :huisnummer, Toevoeging = :toevoeging, Postcode = :postcode, Plaats = :plaats WHERE Klantnummer = :id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':voornaam', $voornaam);
+            $stmt->bindParam(':tussenvoegsel', $tussenvoegsel);
+            $stmt->bindParam(':achternaam', $achternaam);
+            $stmt->bindParam(':straatnaam', $straatnaam);
+            $stmt->bindParam(':huisnummer', $huisnummer);
+            $stmt->bindParam(':toevoeging', $toevoeging);
+            $stmt->bindParam(':postcode', $postcode);
+            $stmt->bindParam(':plaats', $plaats);
+            $stmt->execute();
             header("Location: ../klanten.php");
         } elseif($type == "werksoort") {
             $sql = "UPDATE Werksoort SET Werksoort = :werksoort, Tarief= :tarief, WHERE WerksoortId= :id";
@@ -68,7 +88,7 @@
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':tarief', $tarief);
             $stmt->excecute();
-            header("Location: ../producten.php");
+            header("Location: ../diensten.php");
         }
     }
 

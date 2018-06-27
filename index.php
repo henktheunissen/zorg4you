@@ -15,23 +15,19 @@
 		<?php
 			include('inc/config.php');
 			$werknemer = $db->query('SELECT * FROM Werknemers ORDER BY WerknemerID DESC');
-
+			$rollen = $db->query('SELECT * FROM rollen');
 		?>
 
 	</head>
 
 	<body>
 
-		<ul class="nav nav-pills">
-			<li role="presentation"><a href="index.php">Werknemers</a></li>
-			<li role="presentation"><a href="klanten.php">Klanten</a></li>
-			<li role="presentation"><a href="producten.php">Producten</a></li>
-		</ul>
+		<?php include('inc/header.php'); ?>
 
 		<form class="form-horizontal hidden" id="werknemer-form" method="post" action="inc/functions.php">
 			<fieldset>
 
-				<input id="form-type" name="handle" placeholder="" class="form-control input-md" type="hidden">
+				<input id="form-type" name="action" placeholder="" class="form-control input-md" type="hidden">
 				<input id="type" name="type" placeholder="" class="form-control input-md" type="hidden">
 
 				<div class="form-group">
@@ -99,6 +95,18 @@
 				</div>
 
 				<div class="form-group">
+				<label class="col-md-4 control-label" for="plaats">Rol</label>
+				<div class="col-md-4">
+				<select class="form-control" name="Rol">
+					<?php
+					foreach($rollen as $rol): ?>
+					<option value="<?= $rol['RolId']; ?>"><?= $rol['Rolnaam']; ?></option>
+				<?php endforeach; ?>
+				</select>
+				</div>
+				</div>
+
+				<div class="form-group">
 				<label class="col-md-4 control-label" for="submit"></label>
 				<div class="col-md-4">
 					<input id="submit" type="submit" class="btn btn-primary" value="Toevoegen"/>
@@ -118,18 +126,22 @@
 			<th>Toevoeging</th>
 			<th>Postcode</th>
 			<th>Plaats</th>
+			<th>Rol</th>
 			<th colspan='2'> <button type ='button' onclick = 'showWerknemerForm()' class = 'btn btn-primary'>Toevoegen</button> </th>
 				<?php foreach($werknemer as $row):extract($row);?>
 					<tr>
-						<td><?= $WerknemerID ?></td>
-						<td><?= $Voornaam ?></td>
-						<td><?= $Tussenvoegsel ?></td>
-						<td><?= $Achternaam ?></td>
-						<td><?= $Straatnaam ?></td>
-						<td><?= $Huisnummer ?></td>
-						<td><?= $Toevoeging ?></td>
-						<td><?= $Postcode ?></td>
-						<td><?= $Plaats ?></td>
+						<td><?= $WerknemerID; ?></td>
+						<td><?= $Voornaam; ?></td>
+						<td><?= $Tussenvoegsel; ?></td>
+						<td><?= $Achternaam; ?></td>
+						<td><?= $Straatnaam; ?></td>
+						<td><?= $Huisnummer; ?></td>
+						<td><?= $Toevoeging; ?></td>
+						<td><?= $Postcode; ?></td>
+						<td><?= $Plaats; ?></td>
+						<td><?php foreach($rollen as $rol): ?>
+						<?php if($rol['RolId'] == $RolId) { echo $rol['Rolnaam']; } else { echo "-"; } ?>
+					<?php endforeach; ?></td>
 						<td> <button type ='button' onclick = 'showWerknemerForm(["<?= $WerknemerID ?>", "<?= $Voornaam ?>", "<?= $Tussenvoegsel ?>", "<?= $Achternaam ?>", "<?= $Straatnaam ?>", "<?= $Huisnummer ?>", "<?= $Toevoeging ?>", "<?= $Postcode ?>", "<?= $Plaats ?>"])' class = 'btn btn-primary'>Wijzigen</button> </td>
 						<td> <button type ='button' onclick = 'verwijderen(<?=$WerknemerID?>, "Werknemers", "WerknemerID")' class = 'btn btn-primary'>Verwijderen</button> </td>
 						</tr>

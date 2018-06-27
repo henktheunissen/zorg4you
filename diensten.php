@@ -21,17 +21,13 @@
 
 	<body>
 
-		<ul class="nav nav-pills">
-			<li role="presentation"><a href="index.php">Werknemers</a></li>
-			<li role="presentation"><a href="klanten.php">Klanten</a></li>
-			<li role="presentation"><a href="producten.php">Producten</a></li>
-		</ul>
+		<?php include('inc/header.php'); ?>
 
 		<form class="form-horizontal hidden" id="werksoort-form" method="post" action="inc/functions.php">
 			<fieldset>
 
-				<input id="form-type" name="handle" placeholder="" class="form-control input-md" type="hidden">
-                <input id="type" name="type" placeholder="" class="form-control input-md" type="hidden">
+				<input id="form-type" name="action" placeholder="" class="form-control input-md" type="hidden">
+        <input id="type" name="type" placeholder="" class="form-control input-md" type="hidden">
 
 				<div class="form-group">
 				<label class="col-md-4 control-label" for="voornaam">Werksoort</label>

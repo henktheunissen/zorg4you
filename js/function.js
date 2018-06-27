@@ -4,7 +4,7 @@ function verwijderen(id, type, col){
         "inc/functions.php",
         {
             id: id,
-            handle: "verwijderen",
+            action: "verwijderen",
             type: type,
             col: col
         },
