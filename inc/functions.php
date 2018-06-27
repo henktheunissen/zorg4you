@@ -87,7 +87,7 @@
             $stmt->bindParam(':werksoort', $werksoort);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':tarief', $tarief);
-            $stmt->excecute();
+            $stmt->execute();
             header("Location: ../diensten.php");
         }
     }
