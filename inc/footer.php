@@ -1,1 +1,1 @@
-<p class="footer">&copy; <?= date("Y"); ?> -Designed and Build by BD-SOL</p>
+<p class="footer">&copy; <?= date("Y"); ?> In opdracht van Zorg4you door BD-SOL</p>
