@@ -3,13 +3,13 @@
 }
 
 th{
-    width: 120px;
+    width: 130px;
     color: #8C7968;
 }
 
 
 .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th{
-    border: 1px solid #2d2d2a;
+    border: 1px solid #4e5fce;
 }
 
 html{
@@ -107,7 +107,7 @@ td{
     margin-top: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #8C7968;
+    background-color: #4e5fce;
     color: #FFFFFF;
     text-align: center;
 }
